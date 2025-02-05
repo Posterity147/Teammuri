@@ -1,166 +1,248 @@
 
-h3{
-    font-style: oblique;
-    font-family: cursive;
-    font-size: 200%;
-}
-#what{
-    width: 500px;
-    height: 50px;
-    padding: 10PX;
-    border: 3px  grey;
-    border-radius: 30px;
-    background-color: #F3F3F6;
-    color: black;
-}
-#sign {
-color: black;
-}
-#log {
-    background-color: black;
-    color: #F3F3F6;
-    width: 70px;
-    height: 30px;
-    border-radius: 20px;
-}
-h1{
-    text-align: center;
-    font-style: unset;
-    font-size: xx-large;
-    margin-top: 30px;
-    color: #00202F;
-}
-p{
-    text-align: center;
-    color: grey;
-    font-size: medium;
-    font-family: inherit;
-}
-  
-input.password{
-    margin-top: 40px;
-    border: 1px solid black;
-    border-radius: 50px;
-    width: 450px;
-    height: 45px;
-    padding: 10px;
-    color: whitesmoke;
+#navbar{
 
+    color: #ddd;
 }
-input.username{
-    margin-top: 30px;
-    border: 1px solid black;
-    border-radius: 40px;
-    width: 450px;
-    height: 45px;
+video{
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
     padding: 10px;
-    color: whitesmoke;
 }
-div#auspy{
+@media(max-width:768px) {video {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+
+}}
+h2{
+    text-align: center ;
+}
+#bounce{
     text-align: center;
-    border: 1px solid #013252;
-    border-radius: 25px;
-    width: 650px;
+    border: 1px solid black;
+    border-radius: 5px;
     height: 500px;
-    margin-left: 450px;
-    margin-top: 90px;
-    background-color: azure;
-}
-.username:hover{
-font-size: larger;
-background-color: #00202F;
-}
-.password:hover{
-    font-family: unset;
-    font-size: larger;
-    background-color: #00202F;
-}
-
-button.init{
- width: 200px;
- height: 40px;
- background-color: #00202F;
- color: azure;
- border-radius: 20px ;   
-}
-span{
-    animation: loading 1.4s infinite ease-in-out;
-
-}
-@keyframes loading {
-    0%, 80%, 100% { opacity: 0;}
-    40% { opacity: 1;}
-}
-span:nth-child(1) { animation-delay: -0.32s; }
-span:nth-child(2) { animation-delay: -0.16s;}
-p#create{
-    padding-top: 20px;
-}
-div#button{
-    
-    text-align: center;
-}
-#google{
-    background-color: #013252;
-    color: azure;
-    border-radius: 30px;
-    width: 100px;
-    height: 35px;
-    margin-right: 20px;
-    margin-top: 10px;
-}
-#facebook{
-    background-color: #013252;
-    color: azure;
-    border-radius: 30px;
-    width: 100px;
-    height: 35px;
-    margin-left: 20px;
-    margin-top: 10px;
-}
-#register{
-    text-align: center;
-    align-items: center;
-    border: 2px solid black;
-    border-radius: 30%;
-    box-shadow: 2px 2px 2px rgb( 2, 0.5, 3,1);
-    height: 60vh;
     width: 500px;
-    margin-left: 400px;
-    background-color: #F0FFFF;
-    color:#013252;
+    padding: 30px;
+    margin-left: 500px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
-#first{
-border:1px solid goldenrod ;
-margin-right: 5px;
-border-radius: 4px;
-height: 30px;
+
+input{
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 300px;
+    padding: 10px;
 }
-#last{
-border: 1px solid goldenrod;
-margin-left: 20px;
-border-radius: 4px; 
-height: 30px;
+#button1{
+    background-color: white;
+    color: black;
+    width: 250px;
+    height: 35px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    border: 2px solid black;
 }
-#gender{
-    background-color:whitesmoke;
-    margin-left: 20px;
-    height: 30px;
+#button2{
+    background-color: white;
+    color: black;
+    width: 250px;
+    height: 35px;
+    border-radius: 20px;
+    border: 2px solid black;
 }
-#pass{
-  border: 1px solid black;  
-  margin-left: 28px;
-  border-radius: 4px;
-  height: 30px;
-}
-#usernam{
-border-radius: 4px;
-height: 30px;
-}
-#info{
+button:hover{
+    font-size: larger;
     background-color: black;
-    margin-left: 20px;
-    height: 15px;
-    width:20px;
-    margin-bottom: 5px;
+    color: white;
 }
+footer{
+    margin-top: 30px;
+}
+    
+#toyota{
+    border: 0.5px solid black;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    height: 300px;
+
+}
+#homediv{
+  border: 0.5px solid black;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    height: 300px;
+
+}
+#lambo{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#dash{
+    text-align: center;
+}
+#brands {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    gap: 10px;
+}
+
+
+@keyframes shake{
+100% {
+    transform: translate(0);
+}
+75%{
+    transform: translate(-4px, 0);
+}
+50% {
+    transform: translate(4px, 0);
+}
+25% {
+    transform: translate(-4px, 0);
+}
+0% {
+    transform: translate(0);
+}
+}
+#brands div:hover {
+    box-shadow: 0 0 10px rgb(3, 49, 47);
+    animation: shake 0.5s 10;
+}
+
+#slide-in{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 100vh;
+}
+#bounce{
+    box-shadow: 0 0 10px rgb(6, 13, 13);
+    
+}
+#grid{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    gap: 10px;
+}
+#brands{
+    
+}
+#aardvark{
+    color: #52525B;
+    animation: typing 2s steps(10);
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #000;
+
+}
+@keyframes typing {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  #rotate {
+    animation: rotate 2s;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  #slide-in {
+    animation: slideIn 2s;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  #bounce {
+    animation: bounce 2s;
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  #lambo {
+    animation: fadeIn 5s;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  #toyota {
+    animation: scale 2s;
+  }
+  
+  @keyframes scale {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  #reveal {
+  position: relative;
+}
+
+#reveal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  animation: reveal 2s;
+}
+
+@keyframes reveal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+  
+  
+  
+  
+  
+  
+  

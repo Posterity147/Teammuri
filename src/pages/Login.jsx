@@ -1,26 +1,23 @@
-import React from 'react'
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 
-const Login = () => {
+function FormFloatingBasicExample() {
   return (
-    <div id='auspy'>
-      <h1 id='login'>Log in</h1>
-      <div id='username'>
-      <input type="text" name="user" id="username" className='username'  placeholder='Enter your Username or Email' />
-      </div>
-
-      <div id='password'>
-      <input type="password" name="password" id="password" className='password' placeholder='Input your Password' />
-      </div>
-      <span>.</span><span>.</span><span>.</span><br />
-      <button className='init'>Log in</button><br />
-      <p id='create'>Dont have an account?<a href="">Create account</a></p>
-      <br />or continue with <span>.</span><span>.</span><span>.</span>
-      <div id='button'>
-        <button id='google'>Google</button>
-        <button id='facebook'>Facebook</button>
-      </div>
+    <div>
+    <div id='bounce'>
+<h3 ><b> Sign up</b></h3>
+<p>Continue with your email or Facebook or Google account</p>
+<input type="text" placeholder='Email Address*'id='email' /><br />
+<input type="password" placeholder='Password*' id='email'className='mt-5'/>
+<button className='w-60 m-6 p-2 bg-black text-white rounded-full'>Continue</button><br />
+<p>or</p>
+<div>
+<button id='button1'>Continue with Google</button><br />
+<button id='button2'>Continue with Facebook</button>
+</div>
     </div>
-  )
+    </div>   
+  );
 }
 
-export default Login
+export default FormFloatingBasicExample
