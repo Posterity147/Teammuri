@@ -6,7 +6,7 @@ import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Notfound from './pages/notfound';
+import Notfound from './pages/Notfound';
 import Toyota from './pages/Toyota';
 import Mercedes from './pages/Mercedes';
 import Tesla from './pages/Tesla';
