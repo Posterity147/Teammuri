@@ -423,10 +423,65 @@ p{
 #contact-info {
   margin: 40px 0;
 }
+#featured-cars{
+  display: flex;
+  flex-direction: -reverse;
+}
+#corolla{
+  border: orange 2px solid;
+  box-shadow: #f4a261;
+  height: 320px;
+  margin: 30px;
+  padding: 20px;
+  width: 450px;
+}
+#cart{
+  width: 125px;
+  height: 30px;
+  background-color: orange;
+  color: white;
+  border-radius: 70px;
 
+}
+#corolla {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+#corolla {
+  width: 450px;
+  height: 320px;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+#corolla:nth-child(1) {
+  animation: fadeIn 0.5s ease-in-out;
+}
 
+#corolla:nth-child(2) {
+  animation: fadeIn 0.5s ease-in-out 0.2s;
+}
+
+#corolla:nth-child(3) {
+  animation: fadeIn 0.5s ease-in-out 0.4s;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 1s ease-out forwards;
+}
 
 
 

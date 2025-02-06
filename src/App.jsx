@@ -21,6 +21,8 @@ import Auston from './pages/Auston';
 import Rollsroyce from './pages/Rollsroyce';
 import Contact from './pages/Contact';
 import Services from './pages/Services';
+import Payment from './pages/Payment';
+import About from './pages/About';
 function App() {
 
 
@@ -50,6 +52,8 @@ function App() {
           <Route path='rollsroyce' element={<Rollsroyce />} />
           <Route path='contact' element={<Contact />} />
           <Route path='services' element={<Services />} />
+          <Route path="payment" element={<Payment />} />
+          <Route path='about' element={<About />} />
         </Routes>
         <Footer />
       </BrowserRouter>

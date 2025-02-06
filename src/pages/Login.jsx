@@ -8,7 +8,7 @@ function FormFloatingBasicExample() {
 <h3 ><b> Sign up</b></h3>
 <p>Continue with your email or Facebook or Google account</p>
 <input type="text" placeholder='Email Address*'id='email' /><br />
-<input type="password" placeholder='Password*' id='email'className='mt-5'/>
+<input type="password" placeholder='Password*' id='email'className='mt-3'/>
 <button className='w-60 m-6 p-2 bg-black text-white rounded-full'>Continue</button><br />
 <p>or</p>
 <div>
