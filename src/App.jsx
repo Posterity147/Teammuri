@@ -20,6 +20,7 @@ import Pagani from './pages/Pagani';
 import Auston from './pages/Auston';
 import Rollsroyce from './pages/Rollsroyce';
 import Contact from './pages/Contact';
+import Services from './pages/Services';
 function App() {
 
 
@@ -48,6 +49,7 @@ function App() {
           <Route path='auston' element={<Auston />} />
           <Route path='rollsroyce' element={<Rollsroyce />} />
           <Route path='contact' element={<Contact />} />
+          <Route path='services' element={<Services />} />
         </Routes>
         <Footer />
       </BrowserRouter>

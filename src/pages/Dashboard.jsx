@@ -5,7 +5,7 @@ import { Heart } from 'lucide-react'
 const Dashboard = () => {
   return (
     <div id='parent'>
-      <h1 id='dash'><b><strong>Brand</strong></b></h1>
+      <h1 id='dash'><b><strong>Brands</strong></b></h1>
       <p id='dash'><b><strong>Some of the most popular brands</strong></b></p>
       
       <div id='brands'>

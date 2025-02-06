@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FacebookIcon, InstagramIcon, TwitterIcon, HouseIcon, UserSearch, ScrollText } from 'lucide-react';
 function Footer() {
   return (
-    <footer className="bg-black text-gray-600 py-4 mt-5">
+    <footer className=" text-gray-600 py-4 mt-5" id='footer'>
       <Container>
         <Row>
           <Col md={4} className="mb-4 mb-md-0">
@@ -42,7 +42,7 @@ TrueCar does not broker, sell, or lease motor vehicles. Unless otherwise noted, 
 
 Terms of ServicePrivacy PolicyCalifornia PrivacyDo Not Sell Or Share My Personal Information</p>
       </Container>
-      <div className="text-center text-gray-600 py-2">
+      <div className="text-center text-white py-2">
         &copy; {new Date().getFullYear()} Aardvark. All rights reserved.
       </div>
     </footer>

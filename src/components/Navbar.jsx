@@ -7,23 +7,23 @@ import { HouseIcon } from 'lucide-react';
 
 function NaviBar() {
   return (
-    <Navbar expand="lg" className="flex justify-between gap-36 w-full position-top bg-black h-20" id='navbar'>
-      <Container>
-      <a href="http://localhost:5173/"></a>
-        <Navbar.Brand>
-          <Link to="/" className='no-underline font-serif text-white'><strong><b>Aardvark</b></strong></Link>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link>
-              <Link  className='text-white no-underline' to="/dashboard"><b><strong>Brand</strong></b></Link>
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-        <Nav.Link><Link to="/login" className='no-underline text-white'>Log in or Sign up</Link></Nav.Link>
-      </Container>
-    </Navbar>
+    <nav class="navbar">
+    <div class="logo">
+        <a href="http://localhost:5173/" className='ml-5'>Aardvark Cars</a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="http://localhost:5173/">Home</a></li>
+        <li><a href="http://localhost:5173/dashboard">Inventory</a></li>
+        <li><a href="http://localhost:5173/services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="http://localhost:5173/contact" className='mr-5'>Contact</a></li>
+    </ul>
+    <div class="menu-icon" id="menu-icon">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</nav>
   );
 }
 
