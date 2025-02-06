@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Car, Menu, Search, User } from "lucide-react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import SearchBar from "./Searchbar";
+import { Link } from "react-router-dom"; 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
