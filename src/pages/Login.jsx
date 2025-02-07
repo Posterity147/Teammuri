@@ -95,7 +95,7 @@ function FormFloatingBasicExample() {
           >
             <i className="fab fa-google text-red-500"></i>
             <span className="text-red-500 font-semibold"><ChromeIcon className="text-green-700 inline mr-3" />
-            Continue with Google</span>
+            Continue with Chrome</span>
           </button>
 
           {/* Facebook Button */}

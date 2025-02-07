@@ -114,7 +114,7 @@ const ChooseCarForFamily = () => {
         <p className="text-lg text-gray-700 mb-4">
           Choosing the right family car involves considering factors like your family’s needs, safety features, fuel efficiency, comfort, budget, and more. Take your time to evaluate your options, and you’ll be driving home in the perfect car for your family in no time.
         </p>
-        <Link to="/cars" className="bg-blue-500 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-600">
+        <Link to="/dashboard" className="bg-blue-500 text-white px-6 py-3 rounded-md text-lg hover:bg-blue-600 no underline">
           Browse Our Cars
         </Link>
       </div>
