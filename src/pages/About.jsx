@@ -35,7 +35,7 @@ export default function About() {
 
         <div className="mt-12">
           <p className="text-lg text-gray-600">
-            Ready to find your next car? Explore our <Link to="/dashboard" className="text-blue-500 hover:text-blue-700">inventory</Link> or contact us to schedule a test drive today!
+            Ready to find your next car? Explore our <Link to="/dashboard" className="text-blue-500 hover:text-blue-700 no-underline">inventory</Link> or contact us to schedule a test drive today!
           </p>
         </div>
       </div>
