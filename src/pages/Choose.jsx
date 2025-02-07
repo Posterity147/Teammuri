@@ -22,7 +22,7 @@ const ChooseCarForFamily = () => {
           <li>Will you be driving long distances or taking road trips frequently?</li>
         </ul>
         <p className="text-lg text-gray-700 mb-4">
-          Your answers will help you decide if you need a sedan, SUV, minivan, or a larger vehicle.
+
         </p>
       </div>
 
