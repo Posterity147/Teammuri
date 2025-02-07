@@ -1,53 +1,74 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { FacebookIcon, InstagramIcon, TwitterIcon, HouseIcon, UserSearch, ScrollText, MapPin, Phone, Mail } from 'lucide-react';
-function Footer() {
-  return (
-    <footer className=" text-gray-600 py-4 mt-5" id='footer'>
-      <Container>
-        <Row>
-          
-          <Col md={4} className="mb-4 mb-md-0">
-            <h5 className='text-gray-200'>Quick Links</h5>
-            <ul className="list-unstyled">
-              <li><a href="http://localhost:5173/" className="text-gray-300 hover:text-white no-underline"> <HouseIcon size={20} color='green' className='inline mr-2' /> Home</a></li>
-              <li><a href="http://localhost:5173/contact" className="text-gray-300 hover:text-white no-underline"> <UserSearch size={20} color='green' className='inline mr-2'/>Contact us</a></li>
-              <li><a href="http://localhost:5173/login" className="text-gray-200 hover:text-white no-underline"> <ScrollText size={20} color='cyan' className='inline mr-2'/>Register</a></li>
-            </ul>
-          </Col>
-          <Col md={4}>
-            <h5 className='text-gray-200'>Follow Us</h5>
-            <ul className="list-unstyled">
-              <li><a href="https://twitter.com/TrueCar" className="text-gray-300 hover:text-white no-underline"> <TwitterIcon size={20} color='blue' className='inline mr-2' />X(Formely Twitter)</a></li>
-              <li><a href="https://www.facebook.com/TrueCar" className="text-gray-300 hover:text-white no-underline"> <FacebookIcon size={20} color='blue'className='inline mr-2'/>Facebook</a></li>
-              <li><a href="https://www.instagram.com/truecar/" className="text-gray-300 hover:text-white no-underline"> <InstagramIcon size={20} color='purple' className='inline mr-2'/>Instagram</a></li>
-              
-            </ul>
-          </Col>
-        </Row>
-        <img src="" alt="" />
-      </Container>
-      <div>
-  <h3 className="text-2xl font-semibold mb-4 text-center text-white">Contact Us</h3>
-  <p className="text-gray-300 mb-2">
-    <MapPin className="inline-block mr-2" />
-     95, Babakekere compound Adeta, Ilorin,Kwara State
-  </p>
-  <p className="text-gray-300 mb-2">
-    <Phone className="inline-block mr-2" />
-    +234 9035667678
-  </p>
-  <p className="text-gray-300">
-    <Mail className="inline-block mr-2" />
-    contact@aardvark.com
-  </p>
-</div>
+import { Link } from 'react-router-dom'; 
+import { Facebook, Twitter, Instagram, LinkedinIcon } from 'lucide-react'; 
 
-      <div className="text-center text-white py-2">
-        &copy; {new Date().getFullYear()} Aardvark. All rights reserved.
+const Footer = () => {
+  return (
+    <footer className="bg-gray-800 text-white py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <div>
+            <h2 className="text-2xl font-semibold mb-4">Aardvark Car Dealership</h2>
+            <p className="text-gray-400">
+              Leading the way in car sales and services. Find the perfect vehicle for you, with outstanding customer service and great prices.
+            </p>
+          </div>
+
+      
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/about" className="no-underline text-gray-400 hover:text-white">About Us</Link>
+              </li>
+              <li>
+                <Link to="/dashboard" className="no-underline text-gray-400 hover:text-white">Inventory</Link>
+              </li>
+              <li>
+                <Link to="/services" className="no-underline text-gray-400 hover:text-white">Services</Link>
+              </li>
+              <li>
+                <Link to="/contact" className=" no-underline text-gray-400 hover:text-white">Contact</Link>
+              </li>
+            </ul>
+          </div>
+
+        
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+            <ul className="space-y-2">
+              <li className="text-gray-400">Phone: +234 9035667678</li>
+              <li className="text-gray-400">Email: contact@aardvarkcars.com</li>
+              <li className="text-gray-400">Address: 95 Malhub ilofa road, ilorin, Nigeria</li>
+            </ul>
+          </div>
+
+          
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+            <div className="flex space-x-4">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                <Facebook className="h-6 w-6" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                <Twitter className="h-6 w-6" />
+              </a>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                <Instagram className="h-6 w-6" />
+              </a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                <LinkedinIcon className="h-6 w-6" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-gray-700 pt-6 text-center">
+          <p className="text-gray-400 text-sm">© 2025 Aardvark Car Dealership. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

@@ -23,6 +23,10 @@ import Contact from './pages/Contact';
 import Services from './pages/Services';
 import Payment from './pages/Payment';
 import About from './pages/About';
+import Financing from './pages/Financing';
+import Choose from './pages/Choose';
+import Roads from './pages/Roads';
+import Customization from './pages/Customization';
 function App() {
 
 
@@ -54,6 +58,10 @@ function App() {
           <Route path='services' element={<Services />} />
           <Route path="payment" element={<Payment />} />
           <Route path='about' element={<About />} />
+          <Route path='financing' element={<Financing />} />
+          <Route path='roads' element={<Roads />} />
+          <Route path='choose' element={<Choose />} />
+          <Route path='customization' element={<Customization />} />
         </Routes>
         <Footer />
       </BrowserRouter>
