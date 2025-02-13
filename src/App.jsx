@@ -27,6 +27,12 @@ import Financing from './pages/Financing';
 import Choose from './pages/Choose';
 import Roads from './pages/Roads';
 import Customization from './pages/Customization';
+import Cart from './pages/Cart';
+import Dealership from './pages/Dealership';
+import Carsales from './pages/Carsales';
+import Vehiclemaintenance from './pages/Vehiclemaintenance';
+import TestDrive from './pages/Carsales';
+import Testdrives from './pages/Testdrives';
 function App() {
 
 
@@ -62,6 +68,11 @@ function App() {
           <Route path='roads' element={<Roads />} />
           <Route path='choose' element={<Choose />} />
           <Route path='customization' element={<Customization />} />
+          <Route path='cart' element={<Cart />} />
+          <Route path='dealership' element={ <Dealership/>}/>
+          <Route path='carsales' element={<Carsales />} />
+          <Route path='vehiclemaintenance' element={<Vehiclemaintenance />} />
+          <Route path='testdrives' element={<Testdrives />} />
         </Routes>
         <Footer />
       </BrowserRouter>

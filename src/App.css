@@ -115,6 +115,7 @@ footer{
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
     gap: 10px;
+    
 }
 
 #aardvark{
@@ -468,11 +469,26 @@ p{
   animation: slideIn 1s ease-out forwards;
 }
 
-
-
+#owo{
+  margin-left: 150px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  width: 120px;
+}
  
+
   
-  
-  
-  
+#ola{
+  margin-left:150px ;
+  padding-left: 1px;
+padding-right: 1px;
+padding-bottom: 1px;
+padding-top: 1px;
+width: 120px;
+margin-top: 0.5px;
+
+}
+
   
