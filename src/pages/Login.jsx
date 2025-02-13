@@ -103,7 +103,7 @@ function FormFloatingBasicExample() {
             id="button2"
             className="w-full py-2 px-4 bg-blue-600 text-white rounded-full flex items-center justify-center space-x-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             onClick={handleFacebookSignIn}
-          >
+          > 
             <i className="fab fa-facebook-f"></i>
             <span><Facebook className="text-white inline mr-3" />
             Continue with Facebook</span>

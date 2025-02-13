@@ -1,23 +1,30 @@
-import React, { useState } from 'react';
-import { Heart, HeartOff } from 'lucide-react';
+import React, { useState } from "react";
+import { Heart, HeartOff, ShoppingCart } from "lucide-react";
 
 const Mercedes = () => {
   // State to manage favorites for each car model
-  const [isBrabusFavorite, setIsBrabusFavorite] = useState(false);
-  const [isMaybachFavorite, setIsMaybachFavorite] = useState(false);
-  const [isGLKFavorite, setIsGLKFavorite] = useState(false);
-  const [is2025ModelFavorite, setIs2025ModelFavorite] = useState(false);
-  const [isEClassFavorite, setIsEClassFavorite] = useState(false);
-  const [isGWagonFavorite, setIsGWagonFavorite] = useState(false);
+  const [favorites, setFavorites] = useState({});
+  const [cart, setCart] = useState([]);
 
-  // Function to toggle the favorite state of a car
-  const toggleFavorite = (car) => {
-    if (car === "Brabus") setIsBrabusFavorite(!isBrabusFavorite);
-    if (car === "Maybach") setIsMaybachFavorite(!isMaybachFavorite);
-    if (car === "GLK") setIsGLKFavorite(!isGLKFavorite);
-    if (car === "2025Model") setIs2025ModelFavorite(!is2025ModelFavorite);
-    if (car === "EClass") setIsEClassFavorite(!isEClassFavorite);
-    if (car === "GWagon") setIsGWagonFavorite(!isGWagonFavorite);
+  // List of cars
+  const cars = [
+    { id: "Brabus", name: "Mercedes-Brabus", img: "src/assets/brabus.jpg" },
+    { id: "Maybach", name: "Mercedes Maybach", img: "src/assets/2025maybach.jpg" },
+    { id: "GLK", name: "Mercedes-Benz GLK", img: "src/assets/2025glk.jpg" },
+    { id: "2025Model", name: "Mercedes Benz 2025 Model", img: "src/assets/2025benzz.jpg" },
+    { id: "EClass", name: "Mercedes Benz E-Class", img: "src/assets/e class.jpg" },
+    { id: "GWagon", name: "Mercedes G-Wagon", img: "src/assets/gwagon.jpg" },
+  ];
+
+  // Function to toggle favorite state
+  const toggleFavorite = (carId) => {
+    setFavorites((prev) => ({ ...prev, [carId]: !prev[carId] }));
+  };
+
+  // Function to add to cart
+  const addToCart = (car) => {
+    setCart((prev) => [...prev, car]);
+    alert(`${car.name} has been added to the cart!`);
   };
 
   return (
@@ -41,83 +48,33 @@ const Mercedes = () => {
 
       {/* Cars Grid Section */}
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6">
-        {/* Brabus Model */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {isBrabusFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("Brabus")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("Brabus")} className="cursor-pointer" />
-            )}
-          </div>
-          <h3 className="text-center text-xl font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">Mercedes-Brabus</h3>
-          <img src="src/assets/brabus.jpg" alt="Mercedes-Brabus" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-        </div>
+        {cars.map((car) => (
+          <div key={car.id} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <div className="flex justify-between">
+              {/* Favorite Toggle */}
+              {favorites[car.id] ? (
+                <Heart size={30} color="red" onClick={() => toggleFavorite(car.id)} className="cursor-pointer" />
+              ) : (
+                <HeartOff size={30} color="gray" onClick={() => toggleFavorite(car.id)} className="cursor-pointer" />
+              )}
+            </div>
 
-        {/* Maybach Model */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {isMaybachFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("Maybach")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("Maybach")} className="cursor-pointer" />
-            )}
-          </div>
-          <h3 className="text-center text-xl font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">Mercedes Maybach</h3>
-          <img src="src/assets/2025maybach.jpg" alt="Mercedes Maybach" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-        </div>
+            <h3 className="text-center text-xl font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">
+              {car.name}
+            </h3>
 
-        {/* GLK Model */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {isGLKFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("GLK")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("GLK")} className="cursor-pointer" />
-            )}
-          </div>
-          <h3 className="text-center text-xl font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">Mercedes-Benz GLK</h3>
-          <img src="src/assets/2025glk.jpg" alt="Mercedes GLK" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-        </div>
+            <img src={car.img} alt={car.name} className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
 
-        {/* 2025 Model */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {is2025ModelFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("2025Model")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("2025Model")} className="cursor-pointer" />
-            )}
+            {/* Add to Cart Button */}
+            <button
+              className="mt-4 w-full flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              onClick={() => addToCart(car)}
+            >
+              <ShoppingCart className="mr-2" size={20} />
+              Add to Cart
+            </button>
           </div>
-          <h3 className="text-center text-xl font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">Mercedes Benz 2025 Model</h3>
-          <img src="src/assets/2025benzz.jpg" alt="Mercedes 2025 Model" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-        </div>
-
-        {/* E-Class Model */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {isEClassFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("EClass")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("EClass")} className="cursor-pointer" />
-            )}
-          </div>
-          <h3 className="text-center text-xl font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">Mercedes Benz E-Class</h3>
-          <img src="src/assets/e class.jpg" alt="Mercedes E-Class" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-        </div>
-
-        {/* G-Wagon Model */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {isGWagonFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("GWagon")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("GWagon")} className="cursor-pointer" />
-            )}
-          </div>
-          <h3 className="text-center text-xl font-semibold text-blue-900 group-hover:text-blue-600 transition-colors duration-300">Mercedes G-Wagon</h3>
-          <img src="src/assets/gwagon.jpg" alt="Mercedes G-Wagon" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-        </div>
+        ))}
       </div>
     </div>
   );

@@ -1,126 +1,178 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { PaystackButton } from "react-paystack";
+import { motion } from "framer-motion";
+
+const vehicles = [
+  { id: 1, name: "Toyota Corolla", price: 15000 },
+  { id: 2, name: "Honda Civic", price: 18000 },
+  { id: 3, name: "Ford Focus", price: 17000 },
+];
+
+const paymentMethods = ["Online Banking", "Credit/Debit Card", "Financing", "Cash"];
+
+const PAYSTACK_PUBLIC_KEY = "pk_test_your_public_key_here";
 
 export default function PaymentPage() {
-  const [carDetails] = useState({
-    model: "Toyota Camry 2025",
-    price: 28400,
-    discount: 30,
-  });
+  const [step, setStep] = useState(1);
+  const [vehicle, setVehicle] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const [userInfo, setUserInfo] = useState({
-    name: '',
-    email: '',
-    address: '',
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
-  });
+  const nextStep = () => setStep((prev) => prev + 1);
+  const prevStep = () => setStep((prev) => prev - 1);
 
-  const handleChange = (e) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  const handlePaymentSuccess = (response) => {
+    setLoading(true);
+    setTimeout(() => {
+      alert("🎉 Payment Successful! Transaction Ref: " + response.reference);
+      setStep(1);
+      setVehicle(null);
+      setPaymentMethod("");
+      setEmail("");
+      setLoading(false);
+    }, 2000);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Payment submitted successfully!");
-    
-  };
-
-  const discountedPrice = carDetails.price * (1 - carDetails.discount / 100);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-semibold text-center mb-8">Complete Your Payment</h1>
+    <div className="min-h-screen flex flex-col justify-between bg-gray-100">
+      {/* Navbar Placeholder */}
+      <nav className="bg-blue-600 text-white py-4 text-center text-lg font-bold shadow-md">
+        Vehicle Payment System
+      </nav>
 
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4">Car Details</h2>
-        <div className="flex justify-between items-center mb-6">
-          <div>
-            <h3 className="text-xl">{carDetails.model}</h3>
-            <p className="text-gray-500">Price: ${carDetails.price}</p>
-            <p className="text-red-600">Discount: {carDetails.discount}% off</p>
-          </div>
-          <div>
-            <p className="text-lg font-semibold">Total: ${discountedPrice}</p>
-          </div>
-        </div>
+      {/* Centered Payment Card */}
+      <div className="flex flex-col items-center justify-center flex-grow">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-md p-6 bg-white shadow-lg rounded-lg"
+        >
+          <h1 className="text-2xl font-semibold text-center mb-4">Payment Process</h1>
 
-        <form onSubmit={handleSubmit}>
-          <h2 className="text-2xl font-semibold mb-4">Billing Information</h2>
-
-          <div className="grid grid-cols-1 gap-4 mb-6">
-            <input
-              type="text"
-              name="name"
-              value={userInfo.name}
-              onChange={handleChange}
-              placeholder="Full Name"
-              className="border border-gray-300 p-2 rounded-md"
-              required
+          {loading ? (
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 1 }}
+              className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mt-6"
             />
-            <input
-              type="email"
-              name="email"
-              value={userInfo.email}
-              onChange={handleChange}
-              placeholder="Email Address"
-              className="border border-gray-300 p-2 rounded-md"
-              required
-            />
-            <input
-              type="text"
-              name="address"
-              value={userInfo.address}
-              onChange={handleChange}
-              placeholder="Shipping Address"
-              className="border border-gray-300 p-2 rounded-md"
-              required
-            />
-          </div>
+          ) : (
+            <>
+              {step === 1 && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <h2 className="text-lg font-medium mb-2">Select Vehicle</h2>
+                  <select
+                    className="w-full border p-2 rounded-md cursor-pointer"
+                    onChange={(e) => setVehicle(JSON.parse(e.target.value))}
+                  >
+                    <option value="">Select a vehicle</option>
+                    {vehicles.map((v) => (
+                      <option key={v.id} value={JSON.stringify(v)}>
+                        {v.name} - ${v.price}
+                      </option>
+                    ))}
+                  </select>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-4 w-full bg-blue-500 text-white py-2 rounded shadow-md"
+                    onClick={nextStep}
+                    disabled={!vehicle}
+                  >
+                    Next
+                  </motion.button>
+                </motion.div>
+              )}
 
-          <h2 className="text-2xl font-semibold mb-4">Payment Information</h2>
-          <div className="grid grid-cols-1 gap-4 mb-6">
-            <input
-              type="text"
-              name="cardNumber"
-              value={userInfo.cardNumber}
-              onChange={handleChange}
-              placeholder="Credit Card Number"
-              className="border border-gray-300 p-2 rounded-md"
-              required
-            />
-            <div className="flex space-x-4">
-              <input
-                type="text"
-                name="expiryDate"
-                value={userInfo.expiryDate}
-                onChange={handleChange}
-                placeholder="Expiry Date (MM/YY)"
-                className="border border-gray-300 p-2 rounded-md"
-                required
-              />
-              <input
-                type="text"
-                name="cvv"
-                value={userInfo.cvv}
-                onChange={handleChange}
-                placeholder="CVV"
-                className="border border-gray-300 p-2 rounded-md"
-                required
-              />
-            </div>
-          </div>
+              {step === 2 && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <h2 className="text-lg font-medium mb-2">Vehicle Pricing</h2>
+                  <p>{vehicle.name} - ${vehicle.price}</p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-4 w-full bg-blue-500 text-white py-2 rounded shadow-md"
+                    onClick={nextStep}
+                  >
+                    Next
+                  </motion.button>
+                </motion.div>
+              )}
 
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg hover:bg-blue-700"
-            >
-              Complete Payment
-            </button>
-          </div>
-        </form>
+              {step === 3 && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <h2 className="text-lg font-medium mb-2">Choose Payment Method</h2>
+                  <select
+                    className="w-full border p-2 rounded-md cursor-pointer"
+                    onChange={(e) => setPaymentMethod(e.target.value)}
+                  >
+                    <option value="">Select payment method</option>
+                    {paymentMethods.map((method, index) => (
+                      <option key={index} value={method}>
+                        {method}
+                      </option>
+                    ))}
+                  </select>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-4 w-full bg-blue-500 text-white py-2 rounded shadow-md"
+                    onClick={nextStep}
+                    disabled={!paymentMethod}
+                  >
+                    Next
+                  </motion.button>
+                </motion.div>
+              )}
+
+              {step === 4 && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <h2 className="text-lg font-medium mb-2">Enter Email for Receipt</h2>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full border p-2 rounded-md"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-4 w-full bg-blue-500 text-white py-2 rounded shadow-md"
+                    onClick={nextStep}
+                    disabled={!email}
+                  >
+                    Next
+                  </motion.button>
+                </motion.div>
+              )}
+
+              {step === 5 && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                  <h2 className="text-lg font-medium mb-2">Confirm Payment</h2>
+                  <p>Vehicle: {vehicle?.name}</p>
+                  <p>Price: ${vehicle?.price}</p>
+                  <p>Payment Method: {paymentMethod}</p>
+                  <PaystackButton
+                    className="mt-4 w-full bg-green-500 text-white py-2 rounded text-center cursor-pointer shadow-md"
+                    email={email}
+                    amount={vehicle.price * 100}
+                    publicKey={PAYSTACK_PUBLIC_KEY}
+                    text="Confirm & Pay"
+                    onSuccess={handlePaymentSuccess}
+                    onClose={() => alert("Payment window closed.")}
+                  />
+                </motion.div>
+              )}
+            </>
+          )}
+        </motion.div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-3 text-center">
+        &copy; 2025 Vehicle Payment System. All Rights Reserved.
+      </footer>
     </div>
   );
 }

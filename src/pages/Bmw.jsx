@@ -1,30 +1,37 @@
-import React, { useState } from 'react';
-import { Heart, HeartOff } from 'lucide-react';
+import React, { useState } from "react";
+import { Heart, HeartOff, ShoppingCart } from "lucide-react";
 
 const Bmw = () => {
-  // State to manage favorites for each car model
-  const [is4SeriesFavorite, setIs4SeriesFavorite] = useState(false);
-  const [is3SeriesFavorite, setIs3SeriesFavorite] = useState(false);
-  const [is5SeriesFavorite, setIs5SeriesFavorite] = useState(false);
-  const [isX5Favorite, setIsX5Favorite] = useState(false);
-  const [isM5Favorite, setIsM5Favorite] = useState(false);
-  const [isM3Favorite, setIsM3Favorite] = useState(false);
+  // State for favorites and cart
+  const [favorites, setFavorites] = useState({});
+  const [cart, setCart] = useState([]);
 
-  // Function to toggle the favorite state of a car
-  const toggleFavorite = (car) => {
-    if (car === "4Series") setIs4SeriesFavorite(!is4SeriesFavorite);
-    if (car === "3Series") setIs3SeriesFavorite(!is3SeriesFavorite);
-    if (car === "5Series") setIs5SeriesFavorite(!is5SeriesFavorite);
-    if (car === "X5") setIsX5Favorite(!isX5Favorite);
-    if (car === "M5") setIsM5Favorite(!isM5Favorite);
-    if (car === "M3") setIsM3Favorite(!isM3Favorite);
+  // BMW car models list
+  const cars = [
+    { id: "4Series", name: "BMW 4 Series", img: "src/assets/bmw4series.jpg" },
+    { id: "3Series", name: "BMW 3 Series", img: "src/assets/2025bmw3series.jpg" },
+    { id: "5Series", name: "BMW 5 Series", img: "src/assets/5series.jpg" },
+    { id: "X5", name: "BMW X5 Series", img: "src/assets/X5 Series.jpg" },
+    { id: "M5", name: "BMW M5 Series", img: "src/assets/M5.jpg" },
+    { id: "M3", name: "BMW M3 Series", img: "src/assets/M3.jpg" },
+  ];
+
+  // Toggle favorite state for a car
+  const toggleFavorite = (carId) => {
+    setFavorites((prev) => ({ ...prev, [carId]: !prev[carId] }));
+  };
+
+  // Add to cart function
+  const addToCart = (car) => {
+    setCart((prev) => [...prev, car]);
+    alert(`${car.name} has been added to the cart!`);
   };
 
   return (
     <div className="bg-gray-50 py-10">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h3 className="text-4xl font-bold text-blue-800 mb-4"><b><strong>BMW</strong></b></h3>
+        <h1 className="text-4xl font-bold text-blue-800 mb-4">BMW</h1>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
           BMW (Bayerische Motoren Werke): A German multinational company that produces luxury vehicles and motorcycles, known for performance and innovation.
           <br />
@@ -39,85 +46,35 @@ const Bmw = () => {
         </p>
       </div>
 
-      {/* Cars Grid Section */}
+      {/* BMW Cars Grid */}
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6">
-        {/* BMW 4 Series */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {is4SeriesFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("4Series")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("4Series")} className="cursor-pointer" />
-            )}
-          </div>
-          <img src="src/assets/bmw4series.jpg" alt="BMW 4 Series" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-          <p className="text-center mt-2"><b>BMW 4 Series</b></p>
-        </div>
+        {cars.map((car) => (
+          <div key={car.id} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <div className="flex justify-between">
+              {/* Favorite Toggle */}
+              {favorites[car.id] ? (
+                <Heart size={30} color="red" onClick={() => toggleFavorite(car.id)} className="cursor-pointer" />
+              ) : (
+                <HeartOff size={30} color="gray" onClick={() => toggleFavorite(car.id)} className="cursor-pointer" />
+              )}
+            </div>
 
-        {/* BMW 3 Series */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {is3SeriesFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("3Series")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("3Series")} className="cursor-pointer" />
-            )}
-          </div>
-          <img src="src/assets/2025bmw3series.jpg" alt="BMW 3 Series" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-          <p className="text-center mt-2"><b>BMW 3 Series</b></p>
-        </div>
+            <h3 className="text-center text-xl font-semibold text-blue-800 group-hover:text-blue-600 transition-colors duration-300">
+              {car.name}
+            </h3>
 
-        {/* BMW 5 Series */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {is5SeriesFavorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("5Series")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("5Series")} className="cursor-pointer" />
-            )}
-          </div>
-          <img src="src/assets/5series.jpg" alt="BMW 5 Series" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-          <p className="text-center mt-2"><b>BMW 5 Series</b></p>
-        </div>
+            <img src={car.img} alt={car.name} className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
 
-        {/* BMW X5 */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {isX5Favorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("X5")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("X5")} className="cursor-pointer" />
-            )}
+            {/* Add to Cart Button */}
+            <button
+              className="mt-4 w-full flex items-center justify-center bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition"
+              onClick={() => addToCart(car)}
+            >
+              <ShoppingCart className="mr-2" size={20} />
+              Add to Cart
+            </button>
           </div>
-          <img src="src/assets/X5 Series.jpg" alt="BMW X5 Series" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-          <p className="text-center mt-2"><b>BMW X5 Series</b></p>
-        </div>
-
-        {/* BMW M5 */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {isM5Favorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("M5")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("M5")} className="cursor-pointer" />
-            )}
-          </div>
-          <img src="src/assets/M5.jpg" alt="BMW M5 Series" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-          <p className="text-center mt-2"><b>BMW M5 Series</b></p>
-        </div>
-
-        {/* BMW M3 */}
-        <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
-          <div className="flex justify-end">
-            {isM3Favorite ? (
-              <Heart size={30} color="red" onClick={() => toggleFavorite("M3")} className="cursor-pointer" />
-            ) : (
-              <HeartOff size={30} color="gray" onClick={() => toggleFavorite("M3")} className="cursor-pointer" />
-            )}
-          </div>
-          <img src="src/assets/M3.jpg" alt="BMW M3 Series" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
-          <p className="text-center mt-2"><b>BMW M3 Series</b></p>
-        </div>
+        ))}
       </div>
     </div>
   );
