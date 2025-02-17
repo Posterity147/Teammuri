@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, User, ShoppingCart } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import logo from "../assets/logooo.webp";
@@ -8,61 +8,50 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-  // GSAP Animation for Mobile Menu
   useEffect(() => {
     if (isMenuOpen) {
       gsap.fromTo(
         menuRef.current,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+        { opacity: 0, y: -20, visibility: "hidden" },
+        { opacity: 1, y: 0, visibility: "visible", duration: 0.4 }
       );
     } else {
-      gsap.to(menuRef.current, { opacity: 0, y: -20, duration: 0.3, ease: "power2.in" });
+      gsap.to(menuRef.current, { opacity: 0, y: -20, duration: 0.3, visibility: "hidden" });
     }
   }, [isMenuOpen]);
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white shadow-md relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo Section */}
-          <div className="flex-shrink-0">
-            <Link to="/">
-              <img src={logo} alt="Car logo" className="h-16 w-auto object-contain" />
+          {/* Logo */}
+          <div className="flex-shrink-0 flex items-center space-x-4">
+            <Link to="/" className="flex items-center space-x-4 no-underline">
+              <img src={logo} alt="Car logo" className="h-20 w-auto object-contain" />
+              <h1 className="text-black text-2xl font-bold no-underline">Aadvark Autos</h1>
             </Link>
           </div>
 
-          {/* Centered Navigation Links */}
+          {/* Navigation Links */}
           <div className="hidden md:flex flex-1 justify-center space-x-8">
-            {[
-              { name: "Home", path: "/" },
-              { name: "Inventory", path: "/dashboard" },
-              { name: "Services", path: "/services" },
-              { name: "About Us", path: "/about" },
-              { name: "Contact", path: "/contact" },
-            ].map((item, index) => (
-              <Link 
-                key={index} 
-                to={item.path} 
-                className="text-gray-800 hover:text-gray-500 px-3 py-2 text-md font-medium no-underline transition"
-              >
-                {item.name}
-              </Link>
-            ))}
+            <Link to="/dashboard" className="text-gray-800 hover:text-gray-500 no-underline">Inventory</Link>
+            <Link to="/services" className="text-gray-800 hover:text-gray-500 no-underline">Services</Link>
+            <Link to="/about" className="text-gray-800 hover:text-gray-500 no-underline">About Us</Link>
+            <Link to="/contact" className="text-gray-800 hover:text-gray-500 no-underline">Contact</Link>
           </div>
 
-          {/* Icons Section */}
+          {/* Icons */}
           <div className="flex items-center space-x-6">
-            <Link to="/cart">
-              <ShoppingCart size={30} className="text-gray-800 hover:text-gray-500 transition" />
-            </Link>
-            <Link to="/login" className="bg-gray-800 text-white px-4 py-2 rounded-md flex items-center">
+            {/* User Login */}
+            <Link to="/login" className="bg-gray-800 text-white px-4 py-2 rounded-md no-underline">
               <User className="h-5 w-5" />
             </Link>
+
             {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden bg-gray-800 text-white p-2 rounded-md"
+            <button
+              aria-label="Toggle Menu"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden bg-gray-800 text-white p-2 rounded-md"
             >
               <Menu className="h-6 w-6" />
             </button>
@@ -70,26 +59,17 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu with GSAP Animation */}
+      {/* Mobile Menu (Hidden by Default) */}
       {isMenuOpen && (
-        <div ref={menuRef} className="md:hidden bg-white shadow-md">
-          <div className="px-4 py-3 space-y-2">
-            {[
-              { name: "Home", path: "/" },
-              { name: "Inventory", path: "/dashboard" },
-              { name: "Services", path: "/services" },
-              { name: "About Us", path: "/about" },
-              { name: "Contact", path: "/contact" },
-            ].map((item, index) => (
-              <Link 
-                key={index} 
-                to={item.path} 
-                className="block text-gray-800 hover:bg-gray-200 px-4 py-2 rounded-md text-base font-medium no-underline transition"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+        <div
+          ref={menuRef}
+          className="absolute top-16 left-0 w-full bg-white shadow-lg p-4 space-y-2 md:hidden"
+        >
+          <Link to="/" className="block text-gray-800 hover:text-gray-500 no-underline">Home</Link>
+          <Link to="/dashboard" className="block text-gray-800 hover:text-gray-500 no-underline">Inventory</Link>
+          <Link to="/services" className="block text-gray-800 hover:text-gray-500 no-underline">Services</Link>
+          <Link to="/about" className="block text-gray-800 hover:text-gray-500 no-underline">About Us</Link>
+          <Link to="/contact" className="block text-gray-800 hover:text-gray-500 no-underline">Contact</Link>
         </div>
       )}
     </nav>
