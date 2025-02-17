@@ -25,7 +25,7 @@ const Contact = () => {
               <div id="form-group" className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
                 <input
-                  type="email"
+                  type="email"  
                   name="email"
                   id="email"
                   placeholder="Your Email"

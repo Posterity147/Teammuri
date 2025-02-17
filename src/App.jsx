@@ -1,7 +1,7 @@
-import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Footer from './components/Footer'
-import Navbar from './components/Navbar'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from './components/Footer';
+import Navbar from "./components/Navbar";
+import CheckoutPage from "./pages/Checkout";
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -27,60 +27,64 @@ import Financing from './pages/Financing';
 import Choose from './pages/Choose';
 import Roads from './pages/Roads';
 import Customization from './pages/Customization';
-import Cart from './pages/Cart';
 import Dealership from './pages/Dealership';
 import Carsales from './pages/Carsales';
 import Vehiclemaintenance from './pages/Vehiclemaintenance';
-import TestDrive from './pages/Carsales';
 import Testdrives from './pages/Testdrives';
+import Customer from "./pages/Customer";
+import Signup from "./pages/Signup";
+import Buynow from "./pages/Buynow";
+import Carselection from "./pages/Carselection";
+
 function App() {
-
-
   return (
-    <>
 
+    
+    
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<Notfound />} />
-          <Route path="footer" element={<Footer />} />
-          <Route path='toyota' element={<Toyota />} />
-          <Route path='mercedes' element={<Mercedes />} />
-          <Route path='tesla' element={<Tesla />} />
-          <Route path='bmw' element={<Bmw />} />
-          <Route path='acura' element={<Acura />} />
-          <Route path='hyundai' element={<Hyundai />} />
-          <Route path='Koenigsegg' element={<Koenigsegg />} />
-          <Route path='lamborghini' element={<Lamborghini />} />
-          <Route path='pagani' element={<Pagani />} />
-          <Route path='audi' element={<Audi />} />
-          <Route path='auston' element={<Auston />} />
-          <Route path='rollsroyce' element={<Rollsroyce />} />
-          <Route path='contact' element={<Contact />} />
-          <Route path='services' element={<Services />} />
-          <Route path="payment" element={<Payment />} />
-          <Route path='about' element={<About />} />
-          <Route path='financing' element={<Financing />} />
-          <Route path='roads' element={<Roads />} />
-          <Route path='choose' element={<Choose />} />
-          <Route path='customization' element={<Customization />} />
-          <Route path='cart' element={<Cart />} />
-          <Route path='dealership' element={ <Dealership/>}/>
-          <Route path='carsales' element={<Carsales />} />
-          <Route path='vehiclemaintenance' element={<Vehiclemaintenance />} />
-          <Route path='testdrives' element={<Testdrives />} />
+          <Route path="/footer" element={<Footer />} />
+          <Route path="/toyota" element={<Toyota />} />
+          <Route path="/mercedes" element={<Mercedes />} />
+          <Route path="/tesla" element={<Tesla />} />
+          <Route path="/bmw" element={<Bmw />} />
+          <Route path="/acura" element={<Acura />} />
+          <Route path="/hyundai" element={<Hyundai />} />
+          <Route path="/koenigsegg" element={<Koenigsegg />} />
+          <Route path="/lamborghini" element={<Lamborghini />} />
+          <Route path="/pagani" element={<Pagani />} />
+          <Route path="/audi" element={<Audi />} />
+          <Route path="/auston" element={<Auston />} />
+          <Route path="/rollsroyce" element={<Rollsroyce />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/financing" element={<Financing />} />
+          <Route path="/roads" element={<Roads />} />
+          <Route path="/choose" element={<Choose />} />
+          <Route path="/checkout" element={< CheckoutPage />} />
+          <Route path="/customization" element={<Customization />} />
+          <Route path="/dealership" element={<Dealership />} />
+          <Route path="/carsales" element={<Carsales />} />
+          <Route path="/vehiclemaintenance" element={<Vehiclemaintenance />} />
+          <Route path="/testdrives" element={<Testdrives />} />
+          <Route path="/customer" element={<Customer />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/buynow" element={<Buynow />} />
+          <Route path="/carselection" element={<Carselection />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-
-
-
-    </>
-  )
+    
+  );
 }
 
-export default App
+export default App;
+

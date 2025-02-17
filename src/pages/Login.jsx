@@ -1,117 +1,92 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ChromeIcon, Facebook } from 'lucide-react';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { gsap } from "gsap";
+import { useNavigate } from "react-router-dom";
 
+const LoginPage = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
-function FormFloatingBasicExample() {
-  const [passwordVisible, setPasswordVisible] = useState(false); // State for password visibility
+  const onSubmit = (data) => {
+    setSubmitted(true);
+    gsap.to(".success-message", { opacity: 1, y: 0, duration: 0.5 });
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible); // Toggle password visibility
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can handle form submission here, like validating the fields
-    alert('Form submitted!');
-    
-    // Refresh the page after submission
-    window.location.reload(); // This will reload the page
-  };
-
-  // Handle Google Sign-in
-  const handleGoogleSignIn = () => {
-    // Add Google authentication logic here
-    alert('Google Sign-in clicked!');
-  };
-
-  // Handle Facebook Sign-in
-  const handleFacebookSignIn = () => {
-    // Add Facebook authentication logic here
-    alert('Facebook Sign-in clicked!');
+    // Simulate login success
+    setTimeout(() => {
+      alert("Login successful! Redirecting to dashboard...");
+      navigate("/customer"); // Redirect to dashboard or homepage
+    }, 1500);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full sm:w-4/5 md:w-2/5 lg:w-1/3">
-        <h3 className="text-2xl font-bold text-center mb-4">Sign Up</h3>
-        <p className="text-center mb-6 text-gray-600">
-          Continue with your email or Facebook or Google account
-        </p>
-        
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email Input */}
-          <div>
-            <input
-              type="email"
-              id="email"
-              placeholder="Email Address*"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-          </div>
-          
-          {/* Password Input with Eye Icon */}
-          <div className="relative">
-            <input
-              type={passwordVisible ? 'text' : 'password'} // Toggle password visibility
-              id="password"
-              placeholder="Password*"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
-            {/* Eye Icon to toggle password visibility */}
-            <i
-              className={`absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer ${passwordVisible ? 'text-indigo-600' : 'text-gray-400'}`}
-              onClick={togglePasswordVisibility}
-            >
-              {passwordVisible ? (
-                <i className="fas fa-eye-slash"></i> // Eye-slash icon when password is visible
-              ) : (
-                <i className="fas fa-eye"></i> // Eye icon when password is hidden
-              )}
-            </i>
-          </div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Welcome Back!</h2>
 
-          {/* Continue Button */}
-          <button
-            type="submit"
-            className="w-full py-2 bg-black text-white rounded-full hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            Continue
-          </button>
-        </form>
-
-        <p className="text-center mt-4 text-gray-600">or</p>
-
-        {/* Google and Facebook Buttons */}
-        <div className="space-y-4 mt-6">
-          {/* Google Button */}
-          <button
-            id="button1"
-            className="w-full py-2 px-4 bg-white border border-gray-300 rounded-full flex items-center justify-center space-x-4 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500"
-            onClick={handleGoogleSignIn}
-          >
-            <i className="fab fa-google text-red-500"></i>
-            <span className="text-red-500 font-semibold"><ChromeIcon className="text-green-700 inline mr-3" />
-            Continue with Chrome</span>
-          </button>
-
-          {/* Facebook Button */}
-          <button
-            id="button2"
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded-full flex items-center justify-center space-x-4 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onClick={handleFacebookSignIn}
-          > 
-            <i className="fab fa-facebook-f"></i>
-            <span><Facebook className="text-white inline mr-3" />
-            Continue with Facebook</span>
-          </button>
+        {/* Email Field */}
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium">Email</label>
+          <input 
+            type="email" 
+            {...register("email", { 
+              required: "Email is required", 
+              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email address" }
+            })} 
+            className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500" 
+          />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
         </div>
-      </div>
+
+        {/* Password Field */}
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium">Password</label>
+          <div className="relative">
+            <input 
+              type={showPassword ? "text" : "password"} 
+              {...register("password", { required: "Password is required", minLength: 6 })} 
+              className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500" 
+            />
+            <button 
+              type="button" 
+              onClick={() => setShowPassword(!showPassword)} 
+              className="absolute top-3 right-3 text-gray-500"
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
+          </div>
+          {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+        </div>
+
+        {/* Forgot Password Link */}
+        <div className="text-right mb-4">
+          <a href="/forgot-password" className="text-blue-600 text-sm hover:underline">Forgot password?</a>
+        </div>
+
+        {/* Submit Button */}
+        <button 
+          type="submit" 
+          className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-500 transition font-semibold"
+        >
+          Login
+        </button>
+
+        {/* Success Message */}
+        {submitted && (
+          <p className="success-message text-green-600 text-center mt-4 opacity-0">
+            ✅ Login Successful!
+          </p>
+        )}
+
+        {/* Create Account Link */}
+        <p className="text-center mt-4 text-gray-600">
+          Don't have an account?{" "}
+          <a href="/signup" className="text-blue-600 font-medium hover:underline">Create one</a>
+        </p>
+      </form>
     </div>
   );
-}
+};
 
-export default FormFloatingBasicExample;
+export default LoginPage;
