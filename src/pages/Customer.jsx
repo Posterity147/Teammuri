@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router";
 const CustomerDashboard = () => {
   const navigate = useNavigate();
 
@@ -37,8 +37,8 @@ const CustomerDashboard = () => {
 
           {/* Saved Cars */}
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Saved Cars</h3>
-            <p className="text-gray-600">You haven't saved any cars yet.</p>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">Favorite Cars</h3>
+            <p className="text-gray-600">You haven't liked any cars yet.</p>
           </div>
 
           {/* Test Drive Bookings */}
@@ -51,7 +51,9 @@ const CustomerDashboard = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold text-gray-700 mb-2">Profile Settings</h3>
             <p className="text-gray-600">Update your personal information and preferences.</p>
+            <Link to="/editprofile">
             <button className="mt-2 text-blue-600 hover:underline">Edit Profile</button>
+            </Link>
           </div>
 
           {/* Payment History */}
@@ -64,7 +66,7 @@ const CustomerDashboard = () => {
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold text-gray-700 mb-2">Customer Support</h3>
             <p className="text-gray-600">Need help? Contact our support team.</p>
-            <button className="mt-2 text-blue-600 hover:underline">Contact Support</button>
+              <Link to="/contact"><button className="mt-2 text-blue-600 hover:underline">Contact Support</button></Link>
           </div>
         </div>
       </div>

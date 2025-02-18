@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Heart } from "lucide-react";
+import { Link } from "react-router";
 import { useNavigate } from "react-router-dom";
 import toyotaLogo from "../assets/toyota.jpg";
 import corolla from "../assets/corollanew.jpg";
@@ -27,8 +28,8 @@ const Toyota = () => {
     }));
   };
 
-  const handleBuyNow = (car) => {
-    navigate("/payment", { state: { car } });
+  const handleViewDetails = (car) => {
+    navigate("/car-details", { state: { car } });
   };
 
   return (
@@ -49,9 +50,9 @@ const Toyota = () => {
             </div>
             <img src={car.img} alt={car.model} className="w-full h-48 object-cover rounded-md my-3" loading="lazy" />
             <p className="text-lg font-bold">₦{car.price.toLocaleString()}</p>
-            <button onClick={() => handleBuyNow(car)} className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-              Buy Now
-            </button>
+            <Link to="/toyotadetails"><button onClick={() => handleViewDetails(car)} className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+              View Details
+            </button></Link>
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Heart, HeartOff } from "lucide-react";
-
+import { Link } from "react-router";
 const Koenigsegg = () => {
   const [favorites, setFavorites] = useState({});
 
@@ -33,7 +33,13 @@ const Koenigsegg = () => {
           </div>
           <img src={car.img} alt={car.name} className="w-full h-48 object-cover rounded-lg mt-3" />
           <p className="text-lg font-bold mt-2">{car.price}</p>
-        </div>
+          
+          {/* Buy Now Button */}
+          <button className="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Buy Now</button>
+
+          {/* View Details Button */}
+         <Link to="/details"> <button className="w-full mt-2 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-300">View Details</button>
+         </Link>     </div>
       ))}
     </div>
   );

@@ -21,24 +21,8 @@ const Acura = () => {
   return (
     <div className="bg-gray-50 py-10">
       
-      <div className="text-center mb-8">
-        <h3 className="text-4xl font-bold text-blue-900 mb-4"><b><strong>Acura</strong></b></h3>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-          Acura: A luxury division of Honda known for performance and reliability.
-          <br />
-          <br />
-          <strong>Key Details:</strong>
-          <ul className="list-disc list-inside">
-            <li>Founded: 1986</li>
-            <li>HQ: Tokyo, Japan</li>
-            <li>Parent company: Honda</li>
-            <li>Known for: Luxury vehicles, performance, reliability</li>
-            <li>Iconic models: NSX, TLX, MDX, RDX</li>
-          </ul>
-        </p>
-      </div>
+    
 
-      
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6">
         
         <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
@@ -51,9 +35,14 @@ const Acura = () => {
           </div>
           <img src="src/assets/2025NSX.jpg" alt="Acura NSX" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Acura NSX</b></p>
+          <button
+            className="w-full mt-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            onClick={() => alert('You are buying the Acura NSX')}
+          >
+            Buy Now
+          </button>
         </div>
 
-    
         <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
           <div className="flex justify-end">
             {isTLXFavorite ? (
@@ -64,9 +53,14 @@ const Acura = () => {
           </div>
           <img src="src/assets/2025TLX.jpg" alt="Acura TLX" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Acura TLX</b></p>
+          <button
+            className="w-full mt-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            onClick={() => alert('You are buying the Acura TLX')}
+          >
+            Buy Now
+          </button>
         </div>
 
-        
         <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
           <div className="flex justify-end">
             {isMDXFavorite ? (
@@ -77,9 +71,14 @@ const Acura = () => {
           </div>
           <img src="src/assets/2025MDX.jpg" alt="Acura MDX" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Acura MDX</b></p>
+          <button
+            className="w-full mt-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            onClick={() => alert('You are buying the Acura MDX')}
+          >
+            Buy Now
+          </button>
         </div>
 
-        
         <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
           <div className="flex justify-end">
             {isRDXFavorite ? (
@@ -90,9 +89,14 @@ const Acura = () => {
           </div>
           <img src="src/assets/2025RDX.jpg" alt="Acura RDX" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Acura RDX</b></p>
+          <button
+            className="w-full mt-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            onClick={() => alert('You are buying the Acura RDX')}
+          >
+            Buy Now
+          </button>
         </div>
 
-    
         <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
           <div className="flex justify-end">
             {isILXFavorite ? (
@@ -103,9 +107,14 @@ const Acura = () => {
           </div>
           <img src="src/assets/2025ILX.jpg" alt="Acura ILX" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Acura ILX</b></p>
+          <button
+            className="w-full mt-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            onClick={() => alert('You are buying the Acura ILX')}
+          >
+            Buy Now
+          </button>
         </div>
 
-        
         <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
           <div className="flex justify-end">
             {isCLFavorite ? (
@@ -116,6 +125,12 @@ const Acura = () => {
           </div>
           <img src="src/assets/2025CL.jpg" alt="Acura CL" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Acura CL</b></p>
+          <button
+            className="w-full mt-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            onClick={() => alert('You are buying the Acura CL')}
+          >
+            Buy Now
+          </button>
         </div>
       </div>
     </div>

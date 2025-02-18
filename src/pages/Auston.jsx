@@ -10,7 +10,6 @@ const Aston = () => {
   const [isValkyrieFavorite, setIsValkyrieFavorite] = useState(false);
   const [isCC100Favorite, setIsCC100Favorite] = useState(false);
 
-  
   const toggleFavorite = (car) => {
     if (car === "DB5") setIsDB5Favorite(!isDB5Favorite);
     if (car === "DB9") setIsDB9Favorite(!isDB9Favorite);
@@ -52,6 +51,7 @@ const Aston = () => {
           </div>
           <img src="src/assets/2025DB5.jpg" alt="Aston Martin DB5" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>DB5</b></p>
+          <button className="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Buy Now</button>
         </div>
 
         
@@ -65,6 +65,7 @@ const Aston = () => {
           </div>
           <img src="src/assets/2025DB9.jpg" alt="Aston Martin DB9" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>DB9</b></p>
+          <button className="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Buy Now</button>
         </div>
 
         
@@ -78,6 +79,7 @@ const Aston = () => {
           </div>
           <img src="src/assets/2025Vantage.jpg" alt="Aston Martin Vantage" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Vantage</b></p>
+          <button className="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Buy Now</button>
         </div>
 
         
@@ -91,6 +93,7 @@ const Aston = () => {
           </div>
           <img src="src/assets/2025Vanquish.jpg" alt="Aston Martin Vanquish" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Vanquish</b></p>
+          <button className="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Buy Now</button>
         </div>
 
         
@@ -104,6 +107,7 @@ const Aston = () => {
           </div>
           <img src="src/assets/2025Valkyrie.jpg" alt="Aston Martin Valkyrie" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>Valkyrie</b></p>
+          <button className="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Buy Now</button>
         </div>
 
         
@@ -117,6 +121,7 @@ const Aston = () => {
           </div>
           <img src="src/assets/2025CC100.jpg" alt="Aston Martin CC100" className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300" />
           <p className="text-center mt-2"><b>CC100</b></p>
+          <button className="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">Buy Now</button>
         </div>
       </div>
     </div>

@@ -35,7 +35,9 @@ import Customer from "./pages/Customer";
 import Signup from "./pages/Signup";
 import Buynow from "./pages/Buynow";
 import Carselection from "./pages/Carselection";
-
+import Details from "./pages/Details";
+import ToyotaDetails from "./pages/ToyotaDetails";
+import EditProfile from "./pages/EditProfile";
 function App() {
   return (
 
@@ -79,6 +81,9 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/buynow" element={<Buynow />} />
           <Route path="/carselection" element={<Carselection />} />
+          <Route path="/details" element={<Details />} />
+          <Route path="/toyotadetails" element={<ToyotaDetails />} />
+          <Route path="/editprofile" element={<EditProfile />} />
         </Routes>
         <Footer />
       </BrowserRouter>

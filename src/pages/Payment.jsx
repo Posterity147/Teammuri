@@ -4,8 +4,29 @@ import { motion } from "framer-motion";
 
 const vehicles = [
   { id: 1, name: "Toyota Corolla", price: 15000 },
-  { id: 2, name: "Honda Civic", price: 18000 },
-  { id: 3, name: "Ford Focus", price: 17000 },
+  { id: 2, name: "Toyota Camry", price: 18000 },
+  { id: 3, name: "Toyota Land Cruiser", price: 50000 },
+  { id: 4, name: "Tesla Model S", price: 80000 },
+  { id: 5, name: "Tesla Model X", price: 90000 },
+  { id: 6, name: "Mercedes-Benz C-Class", price: 45000 },
+  { id: 7, name: "Mercedes-Benz S-Class", price: 80000 },
+  { id: 8, name: "BMW 3 Series", price: 35000 },
+  { id: 9, name: "BMW M5", price: 100000 },
+  { id: 10, name: "Koenigsegg Jesko", price: 3000000 },
+  { id: 11, name: "Koenigsegg Regera", price: 2000000 },
+  { id: 12, name: "Acura NSX", price: 120000 },
+  { id: 13, name: "Aston Martin DB11", price: 200000 },
+  { id: 14, name: "Aston Martin Vantage", price: 150000 },
+  { id: 15, name: "Lamborghini Aventador", price: 400000 },
+  { id: 16, name: "Lamborghini Huracan", price: 250000 },
+  { id: 17, name: "Pagani Huayra", price: 3000000 },
+  { id: 18, name: "Pagani Zonda", price: 2500000 },
+  { id: 19, name: "Hyundai Sonata", price: 23000 },
+  { id: 20, name: "Hyundai Elantra", price: 20000 },
+  { id: 21, name: "Rolls Royce Phantom", price: 450000 },
+  { id: 22, name: "Rolls Royce Cullinan", price: 500000 },
+  { id: 23, name: "Audi A8", price: 60000 },
+  { id: 24, name: "Audi Q7", price: 70000 },
 ];
 
 const paymentMethods = ["Online Banking", "Credit/Debit Card", "Financing"];
@@ -64,7 +85,7 @@ export default function PaymentPage() {
                   <h2 className="text-lg font-medium mb-2">Select Vehicle</h2>
                   <select
                     className="w-full border p-2 rounded-md cursor-pointer"
-                    onChange={(e) => setVehicle(vehicles.find(v => v.id === Number(e.target.value)))}
+                    onChange={(e) => setVehicle(vehicles.find((v) => v.id === Number(e.target.value)))}
                   >
                     <option value="">Select a vehicle</option>
                     {vehicles.map((v) => (

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { gsap } from "gsap";
 import zxcvbn from "zxcvbn";
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
-
+import { Link } from "react-router";
 const SignupPage = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [passwordStrength, setPasswordStrength] = useState(0);
@@ -104,12 +104,14 @@ const SignupPage = () => {
         </div>
 
         {/* Submit Button */}
+        <Link to="/login">
         <button 
           type="submit" 
           className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-500 transition font-semibold"
         >
           Sign Up
         </button>
+        </Link>
 
         {/* Success Message */}
         {submitted && (

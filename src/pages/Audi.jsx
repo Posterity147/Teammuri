@@ -7,12 +7,12 @@ const Audi = () => {
 
   // List of Audi Cars
   const cars = [
-    { id: "A4", name: "Audi A4", img: "src/assets/A4.jpg" },
-    { id: "A6", name: "Audi A6", img: "src/assets/2025A6.jpg" },
-    { id: "A8", name: "Audi A8", img: "src/assets/2025A8.jpg" },
-    { id: "RS7", name: "Audi RS7", img: "src/assets/2025RS7.jpg" },
-    { id: "Q5", name: "Audi Q5", img: "src/assets/2025Q5.jpg" },
-    { id: "R8", name: "Audi R8", img: "src/assets/2025R8.jpg" },
+    { id: "A4", name: "Audi A4", price: "₦40,000,000", img: "src/assets/A4.jpg" },
+    { id: "A6", name: "Audi A6", price: "₦55,000,000", img: "src/assets/2025A6.jpg" },
+    { id: "A8", name: "Audi A8", price: "₦75,000,000", img: "src/assets/2025A8.jpg" },
+    { id: "RS7", name: "Audi RS7", price: "₦85,000,000", img: "src/assets/2025RS7.jpg" },
+    { id: "Q5", name: "Audi Q5", price: "₦60,000,000", img: "src/assets/2025Q5.jpg" },
+    { id: "R8", name: "Audi R8", price: "₦120,000,000", img: "src/assets/2025R8.jpg" },
   ];
 
   // Toggle favorite function
@@ -55,6 +55,14 @@ const Audi = () => {
               className="w-full h-48 object-cover rounded-lg mt-3 group-hover:scale-105 transition-transform duration-300"
             />
             <p className="text-center mt-2 font-semibold">{car.name}</p>
+            <p className="text-center text-lg font-bold text-red-600 mt-2">{car.price}</p>
+
+            <button
+              className="w-full mt-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+              onClick={() => alert(`You are buying the ${car.name}`)}
+            >
+              Buy Now
+            </button>
           </div>
         ))}
       </div>

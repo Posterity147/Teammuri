@@ -33,6 +33,13 @@ const Bmw = () => {
           </div>
           <img src={car.img} alt={car.name} className="w-full h-48 object-cover rounded-lg mt-3" />
           <p className="text-lg font-bold mt-2">{car.price}</p>
+
+          <button
+            className="w-full mt-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            onClick={() => alert(`You are buying the ${car.name}`)}
+          >
+            Buy Now
+          </button>
         </div>
       ))}
     </div>

@@ -50,6 +50,12 @@ const Mercedes = () => {
             </div>
             <img src={car.img} alt={car.name} className="w-full h-48 object-cover rounded-md my-3" loading="lazy" />
             <p className="text-lg font-bold">{car.price}</p>
+            <button
+              className="mt-4 w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+              onClick={() => alert(`You are buying the ${car.name}`)}
+            >
+              Buy Now
+            </button>
           </div>
         ))}
       </div>

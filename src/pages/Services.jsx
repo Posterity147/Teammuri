@@ -18,8 +18,7 @@ const SlidingDivs = () => {
   const services = [
     { title: "Car Sales", description: "Find new and pre-owned cars that suit your style and budget.", link: "/carsales" },
     { title: "Vehicle Maintenance", description: "Ensure your vehicle runs smoothly with our expert service.", link: "/vehiclemaintenance" },
-    { title: "Financing Options", description: "Get flexible financing plans tailored to your needs.", link: "/financingoptions" },
-    { title: "Trade-in Services", description: "Exchange your old car for credit toward a new one.", link: "/trade-in-services" },
+    { title: "Financing Options", description: "Get flexible financing plans tailored to your needs.", link: "/financing" },
     { title: "Test Drives", description: "Experience your favorite car before making a decision.", link: "/testdrives" },
   ];
 
