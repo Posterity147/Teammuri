@@ -8,7 +8,7 @@ const vehicles = [
   { id: 3, name: "Ford Focus", price: 17000 },
 ];
 
-const paymentMethods = ["Online Banking", "Credit/Debit Card", "Financing", "Cash"];
+const paymentMethods = ["Online Banking", "Credit/Debit Card", "Financing"];
 
 const PAYSTACK_PUBLIC_KEY = "pk_test_your_public_key_here";
 
@@ -36,12 +36,12 @@ export default function PaymentPage() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-100">
-      {/* Navbar Placeholder */}
+      {/* Navbar */}
       <nav className="bg-blue-600 text-white py-4 text-center text-lg font-bold shadow-md">
         Vehicle Payment System
       </nav>
 
-      {/* Centered Payment Card */}
+      {/* Payment Process Card */}
       <div className="flex flex-col items-center justify-center flex-grow">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -64,11 +64,11 @@ export default function PaymentPage() {
                   <h2 className="text-lg font-medium mb-2">Select Vehicle</h2>
                   <select
                     className="w-full border p-2 rounded-md cursor-pointer"
-                    onChange={(e) => setVehicle(JSON.parse(e.target.value))}
+                    onChange={(e) => setVehicle(vehicles.find(v => v.id === Number(e.target.value)))}
                   >
                     <option value="">Select a vehicle</option>
                     {vehicles.map((v) => (
-                      <option key={v.id} value={JSON.stringify(v)}>
+                      <option key={v.id} value={v.id}>
                         {v.name} - ${v.price}
                       </option>
                     ))}
@@ -88,7 +88,7 @@ export default function PaymentPage() {
               {step === 2 && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
                   <h2 className="text-lg font-medium mb-2">Vehicle Pricing</h2>
-                  <p>{vehicle.name} - ${vehicle.price}</p>
+                  <p>{vehicle?.name} - ${vehicle?.price}</p>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -133,6 +133,7 @@ export default function PaymentPage() {
                     type="email"
                     placeholder="Enter your email"
                     className="w-full border p-2 rounded-md"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <motion.button
@@ -156,7 +157,7 @@ export default function PaymentPage() {
                   <PaystackButton
                     className="mt-4 w-full bg-green-500 text-white py-2 rounded text-center cursor-pointer shadow-md"
                     email={email}
-                    amount={vehicle.price * 100}
+                    amount={vehicle?.price * 100}
                     publicKey={PAYSTACK_PUBLIC_KEY}
                     text="Confirm & Pay"
                     onSuccess={handlePaymentSuccess}

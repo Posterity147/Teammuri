@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-
 import slide1 from '../assets/1ab.webp';
 import slide2 from '../assets/2ab.jpg';
 import slide3 from '../assets/3ab.webp';
@@ -25,7 +24,12 @@ const Home = () => {
   return (
     <div className="font-sans">
       
+      {/* Hero Section with Image and Video Overlay */}
       <div className="relative w-full h-[800px] overflow-hidden">
+        <video autoPlay muted loop className="absolute w-full h-full object-cover z-0">
+          <source src="your-video.mp4" type="video/mp4" />
+        </video>
+
         <AnimatePresence mode="wait">
           <motion.img
             key={currentImageIndex}
@@ -40,7 +44,6 @@ const Home = () => {
           />
         </AnimatePresence>
 
-        
         <motion.div
           className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6 bg-black bg-opacity-50"
           initial={{ opacity: 0, y: 50 }}
@@ -66,10 +69,9 @@ const Home = () => {
         </motion.div>
       </div>
 
-      
+      {/* Cars List Section */}
       <div className="flex flex-wrap justify-center gap-6 mt-10 mb-10">
-        {[
-          { img: camry, name: 'Toyota Camry 2025 Model', price: '$28,400', discount: '30% off' },
+        {[{ img: camry, name: 'Toyota Camry 2025 Model', price: '$28,400', discount: '30% off' },
           { img: corolla, name: 'Toyota Corolla 2025 Model', price: '$23,500', discount: '20% off' },
           { img: civic, name: 'Honda Civic 2025 Model', price: '$23,500', discount: '20% off' }
         ].map((car, index) => (
@@ -90,12 +92,11 @@ const Home = () => {
         ))}
       </div>
 
-      
+      {/* Testimonials Section */}
       <div className="bg-gray-100 py-10 text-center">
         <h2 className="text-4xl mb-6">What Our Customers Say</h2>
         <div className="flex flex-wrap justify-center gap-6">
-          {[
-            { quote: 'Aardvark made buying my first car so easy and stress-free. Great customer service!', name: 'Abdulmalik Badmus' },
+          {[{ quote: 'Aardvark made buying my first car so easy and stress-free. Great customer service!', name: 'Abdulmalik Badmus' },
             { quote: 'I love my new Toyota Camry! They helped me get the best deal on financing.', name: 'Aisha' }
           ].map((testimonial, index) => (
             <motion.div
@@ -112,7 +113,19 @@ const Home = () => {
         </div>
       </div>
 
-    
+      {/* Video Overlay Section (Right Under Testimonials) */}
+      <div className="relative py-10 text-center">
+  <video autoPlay muted loop className="w-full h-full object-cover z-10">
+    <source src="src/assets/videooverlay.mp4" type="video/mp4" />
+  </video>
+  <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-50 z-30">
+    <h2 className="text-4xl mb-5">Experience the Difference</h2>
+    <p className="text-xl mb-6">Where Car Interiors provide comfort and safety.</p>
+  </div>
+</div>
+
+
+      {/* Financing Section */}
       <div className="bg-blue-900 text-white py-10 text-center">
         <h2 className="text-4xl mb-5">Get Pre-Approved for Financing</h2>
         <p className="text-2xl mb-5">With our easy online application, you can get pre-approved in minutes!</p>
@@ -121,12 +134,11 @@ const Home = () => {
         </Link>
       </div>
 
-      
+      {/* Latest Articles Section */}
       <div className="py-20 text-center">
         <h2 className="text-4xl mb-5">Read Our Latest Articles</h2>
         <div className="flex flex-wrap justify-center gap-6">
-          {[
-            { title: 'How to Choose the Right Car for Your Family', excerpt: 'Choosing the perfect car for your family can be overwhelming. Here’s a guide to help...', link: '/choose' },
+          {[{ title: 'How to Choose the Right Car for Your Family', excerpt: 'Choosing the perfect car for your family can be overwhelming. Here’s a guide to help...', link: '/choose' },
             { title: 'Top 5 Cars for Road Trips in 2025', excerpt: 'Planning a road trip? Here are the top 5 cars that are perfect for long drives...', link: '/roads' }
           ].map((blog, index) => (
             <motion.div
@@ -145,6 +157,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+      
     </div>
   );
 }

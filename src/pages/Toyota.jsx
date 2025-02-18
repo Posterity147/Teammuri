@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import toyotaLogo from "../assets/toyota.jpg";
-import corolla from "../assets/2025corolla.jpg";
-import camry from "../assets/2025camry.jpg";
-import prius from "../assets/2025prius.jpg";
-import landCruiser from "../assets/2025landcruiser.jpg";
-import urbanCruiser from "../assets/urban2025.jpg";
+import corolla from "../assets/corollanew.jpg";
+import camry from "../assets/camrynew.webp";
+import prius from "../assets/priusnew.jpg";
+import landCruiser from "../assets/landcruisernew.webp";
+import urbanCruiser from "../assets/urbancruisernew.jpg";
 
 const Toyota = () => {
   const [likedCars, setLikedCars] = useState({});
